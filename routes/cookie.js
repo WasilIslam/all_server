@@ -6,6 +6,11 @@ router.get("/info", async (req, res) => {
 });
 router.get("/", async (req, res) => {
   console.log("getting the cookie from the cookie parser");
-  res.cookie("all-auth-token", "working").send("cookie set");
+  res
+    .cookie("all-auth-token", "working", {
+      maxAge: 86_400_000,
+      httpOnly: true,
+    })
+    .send("cookie set");
 });
 module.exports = router;
